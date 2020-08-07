@@ -1,5 +1,4 @@
-# craydgemm
-c++/cuda/hip double-precision DGEMM heat/power/smoke test
+# craydgemm c++/cuda/hip double-precision DGEMM heat/power/smoke test
 **DGEMM Matrix Multiplication** based on a script from Dell via UC Berkeley
 
 **Copy craydgemm.zip from email to test directory, unzip it.**
@@ -93,7 +92,7 @@ executable.**
 
 `\++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++`
 
-MULTIPLYING TWO SQUARE MATRICES OF SIZE 2000 FLOATS
+`MULTIPLYING TWO SQUARE MATRICES OF SIZE 2000 FLOATS`
 
 **There are eight scripts provided for exercising eight gpus (0, 1, 2, 3, 4, 5,
 '6, 7), each looks like the following with a matrix size of 25000 doubles.**
