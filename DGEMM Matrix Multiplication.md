@@ -43,60 +43,60 @@ then execute mmdblgpugiops 10 times varying the matrix size from 1,000 doubles
 to 10,000 doubles as a warm up. This script also marks the \*.sh files
 executable.**
 
-abc\@djy:\~/craydgemm\$ cd craydgemm
+`abc\@djy:\~/craydgemm\$ cd craydgemm`
 
-abc\@djy:\~/craydgemm/craydgemm\$ chmod +x ./MatMulCompilePrep.sh
+`abc\@djy:\~/craydgemm/craydgemm\$ chmod +x ./MatMulCompilePrep.sh`
 
-abc\@djy:\~/craydgemm/craydgemm\$ ./MatMulCompilePrep.sh
+`abc\@djy:\~/craydgemm/craydgemm\$ ./MatMulCompilePrep.sh`
 
-\++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+`\++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++`
 
-MULTIPLYING TWO SQUARE MATRICES OF SIZE 1000 FLOATS
+`MULTIPLYING TWO SQUARE MATRICES OF SIZE 1000 FLOATS`
 
-\------ Matrix Dimensions ------
+`\------ Matrix Dimensions ------`
 
-dims a,b = 1000 , 1000
+`dims a,b = 1000 , 1000`
 
-info: allocate host mem ( 22.89 MB)
+`info: allocate host mem ( 22.89 MB)`
 
-info: device mem ( 22.89 MB)
+`info: device mem ( 22.89 MB)`
 
-Filling in 2D arrays a and b
+`Filling in 2D arrays a and b`
 
-Filling Complete
+`Filling Complete`
 
-\------- CUDA Parameters -------
+`\------- CUDA Parameters -------`
 
-NUM_THREADS( 16, 16, 0)
+`NUM_THREADS( 16, 16, 0)`
 
-blks( 63, 63, 0)
+`blks( 63, 63, 0)`
 
-TOTAL DBLOPS 2000000000.000000
+`TOTAL DBLOPS 2000000000.000000`
 
-\-------------------------------
+`\-------------------------------`
 
-Calling CPU Matrix Multiply
+`Calling CPU Matrix Multiply`
 
-CPU took 0.000000 seconds as computed by gettimeofday() function
+`CPU took 0.000000 seconds as computed by gettimeofday() function`
 
-CPU Matrix multiplication completed. Time to launch GPU kernel.
+`CPU Matrix multiplication completed. Time to launch GPU kernel.`
 
-GPU took 0.371508 seconds as computed by CudaEvent function
+`GPU took 0.371508 seconds as computed by CudaEvent function`
 
-GPU-GDBLOPS/second 5.383459
+`GPU-GDBLOPS/second 5.383459`
 
-Experiment Done.
+`Experiment Done.`
 
-\-------------------------------
+`\-------------------------------`
 
-============================================================================================================
+`============================================================================================================`
 
-\++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+`\++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++`
 
 MULTIPLYING TWO SQUARE MATRICES OF SIZE 2000 FLOATS
 
 **There are eight scripts provided for exercising eight gpus (0, 1, 2, 3, 4, 5,
-6, 7), each looks like the following with a matrix size of 25000 doubles.**
+'6, 7), each looks like the following with a matrix size of 25000 doubles.**
 
 abc\@djy:\~/craydgemm/craydgemm\$ cat mmdblgpu00.loop.sh
 
