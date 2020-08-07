@@ -5,6 +5,7 @@ c++/cuda/hip double-precision DGEMM heat/power/smoke test
 **Copy craydgemm.zip from email to test directory, unzip it.**
 
 `abc\@djy:\~/craydgemm\$ unzip craydgemm.zip`
+
 `Archive: craydgemm.zip`
 
 `inflating: craydgemm/MatMulCompilePrep.sh`
