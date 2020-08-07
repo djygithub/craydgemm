@@ -1,6 +1,6 @@
-**DGEMM Matrix Multiplication**
+**DGEMM Matrix Multiplication** based on a script from Dell via UC Berkeley
 
-**Copy zip file from email to test directory, unzip it.**
+**Copy craydgemm.zip from email to test directory, unzip it.**
 
 abc\@djy:\~/craydgemm\$ unzip craydgemm.zip
 
