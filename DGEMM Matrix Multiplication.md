@@ -1,6 +1,6 @@
 **DGEMM Matrix Multiplication**
 
-**Copy zip file from email to test directory, unzip it.**
+**Copy craydgemm.zip to test directory, unzip it.**
 
 abc\@djy:\~/craydgemm\$ unzip craydgemm.zip
 
