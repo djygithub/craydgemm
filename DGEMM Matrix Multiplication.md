@@ -3,37 +3,21 @@
 **Copy craydgemm.zip to test directory, unzip it.**
 
 abc\@djy:\~/craydgemm\$ unzip craydgemm.zip
-
 Archive: craydgemm.zip
-
 inflating: craydgemm/MatMulCompilePrep.sh
-
 inflating: craydgemm/Matrix_Multiplication_GPU_DOUBLE_GIOPS_PINNED_TWO.cu
-
 extracting: craydgemm/mmdblgpu00.loop.sh
-
 extracting: craydgemm/mmdblgpu01.loop.sh
-
 extracting: craydgemm/mmdblgpu02.loop.sh
-
 extracting: craydgemm/mmdblgpu03.loop.sh
-
 extracting: craydgemm/mmdblgpu04.loop.sh
-
 extracting: craydgemm/mmdblgpu05.loop.sh
-
 extracting: craydgemm/mmdblgpu06.loop.sh
-
 extracting: craydgemm/mmdblgpu07.loop.sh
-
 inflating: craydgemm/rocmsmi.bw.sh
-
 inflating: craydgemm/rocmsmi.sh
-
 inflating: craydgemm/test4.sh
-
 inflating: craydgemm/test8.sh
-
 abc\@djy:\~/craydgemm\$
 
 **Use chmod to mark MatMulCompilePrep.sh executable, it will hipify, compile,
@@ -42,53 +26,30 @@ to 10,000 doubles as a warm up. This script also marks the \*.sh files
 executable.**
 
 abc\@djy:\~/craydgemm\$ cd craydgemm
-
 abc\@djy:\~/craydgemm/craydgemm\$ chmod +x ./MatMulCompilePrep.sh
-
 abc\@djy:\~/craydgemm/craydgemm\$ ./MatMulCompilePrep.sh
 
 \++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 MULTIPLYING TWO SQUARE MATRICES OF SIZE 1000 FLOATS
-
 \------ Matrix Dimensions ------
-
 dims a,b = 1000 , 1000
-
 info: allocate host mem ( 22.89 MB)
-
 info: device mem ( 22.89 MB)
-
 Filling in 2D arrays a and b
-
 Filling Complete
-
 \------- CUDA Parameters -------
-
 NUM_THREADS( 16, 16, 0)
-
 blks( 63, 63, 0)
-
 TOTAL DBLOPS 2000000000.000000
-
 \-------------------------------
-
 Calling CPU Matrix Multiply
-
 CPU took 0.000000 seconds as computed by gettimeofday() function
-
 CPU Matrix multiplication completed. Time to launch GPU kernel.
-
 GPU took 0.371508 seconds as computed by CudaEvent function
-
 GPU-GDBLOPS/second 5.383459
-
 Experiment Done.
-
 \-------------------------------
-
 ============================================================================================================
-
 \++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 MULTIPLYING TWO SQUARE MATRICES OF SIZE 2000 FLOATS
@@ -97,41 +58,25 @@ MULTIPLYING TWO SQUARE MATRICES OF SIZE 2000 FLOATS
 6, 7), each looks like the following with a matrix size of 25000 doubles.**
 
 abc\@djy:\~/craydgemm/craydgemm\$ cat mmdblgpu00.loop.sh
-
 export HIP_VISIBLE_DEVICES=0
-
 while true
-
 do
-
 date
-
 ./mmdblgpugiops 25000
-
 done
-
 abc\@djy:\~/craydgemm/craydgemm\$
 
 **Start an eight GPU stress test by executing ./test8**
 
 abc\@djy:\~/craydgemm/craydgemm\$ ./test8.sh
-
 Wed Sep 25 07:37:43 PDT 2019
-
 Wed Sep 25 07:37:43 PDT 2019
-
 Wed Sep 25 07:37:43 PDT 2019
-
 abc\@djy:\~/craydgemm/craydgemm\$
-
 Wed Sep 25 07:37:43 PDT 2019
-
 Wed Sep 25 07:37:43 PDT 2019
-
 Wed Sep 25 07:37:43 PDT 2019
-
 Wed Sep 25 07:37:43 PDT 2019
-
 Wed Sep 25 07:37:43 PDT 2019
 
 \------ Matrix Dimensions ------
