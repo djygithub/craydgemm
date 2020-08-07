@@ -1,3 +1,5 @@
+# craydgemm
+c++/cuda/hip double-precision DGEMM heat/power/smoke test
 **DGEMM Matrix Multiplication** based on a script from Dell via UC Berkeley
 
 **Copy craydgemm.zip from email to test directory, unzip it.**
