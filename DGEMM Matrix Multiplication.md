@@ -4,39 +4,39 @@ c++/cuda/hip double-precision DGEMM heat/power/smoke test
 
 **Copy craydgemm.zip from email to test directory, unzip it.**
 
-abc\@djy:\~/craydgemm\$ unzip craydgemm.zip
+`abc\@djy:\~/craydgemm\$ unzip craydgemm.zip`
 
-Archive: craydgemm.zip
+`Archive: craydgemm.zip`
 
-inflating: craydgemm/MatMulCompilePrep.sh
+`inflating: craydgemm/MatMulCompilePrep.sh`
 
-inflating: craydgemm/Matrix_Multiplication_GPU_DOUBLE_GIOPS_PINNED_TWO.cu
+`inflating: craydgemm/Matrix_Multiplication_GPU_DOUBLE_GIOPS_PINNED_TWO.cu`
 
-extracting: craydgemm/mmdblgpu00.loop.sh
+`extracting: craydgemm/mmdblgpu00.loop.sh`
 
-extracting: craydgemm/mmdblgpu01.loop.sh
+`extracting: craydgemm/mmdblgpu01.loop.sh`
 
-extracting: craydgemm/mmdblgpu02.loop.sh
+`extracting: craydgemm/mmdblgpu02.loop.sh`
 
-extracting: craydgemm/mmdblgpu03.loop.sh
+`extracting: craydgemm/mmdblgpu03.loop.sh`
 
-extracting: craydgemm/mmdblgpu04.loop.sh
+`extracting: craydgemm/mmdblgpu04.loop.sh`
 
-extracting: craydgemm/mmdblgpu05.loop.sh
+`extracting: craydgemm/mmdblgpu05.loop.sh`
 
-extracting: craydgemm/mmdblgpu06.loop.sh
+`extracting: craydgemm/mmdblgpu06.loop.sh`
 
-extracting: craydgemm/mmdblgpu07.loop.sh
+`extracting: craydgemm/mmdblgpu07.loop.sh`
 
-inflating: craydgemm/rocmsmi.bw.sh
+`inflating: craydgemm/rocmsmi.bw.sh`
 
-inflating: craydgemm/rocmsmi.sh
+`inflating: craydgemm/rocmsmi.sh`
 
-inflating: craydgemm/test4.sh
+`inflating: craydgemm/test4.sh`
 
-inflating: craydgemm/test8.sh
+`inflating: craydgemm/test8.sh`
 
-abc\@djy:\~/craydgemm\$
+`abc\@djy:\~/craydgemm\$`
 
 **Use chmod to mark MatMulCompilePrep.sh executable, it will hipify, compile,
 then execute mmdblgpugiops 10 times varying the matrix size from 1,000 doubles
