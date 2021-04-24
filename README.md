@@ -1,7 +1,7 @@
 # craydgemm
 c++/cuda/hip double-precision DGEMM CPU/GPU heat/power/smoke test for windows and linux
 
-Copy craydgemm.zip fromm github (djygithub/craydgemm) to test directory, unzip it.  
+Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
 abc@djy:~/craydgemm$ unzip craydgemm.zip
 Archive:  craydgemm.zip
