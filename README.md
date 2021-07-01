@@ -1,6 +1,6 @@
 # craydgemm
 c++/cuda/hip double-precision DGEMM CPU/GPU heat/power/smoke test for windows and linux
-
+# linux/rocm/hip
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
 abc@djy:~/craydgemm$ unzip craydgemm.zip
@@ -126,7 +126,7 @@ GPU  Temp   AvgPwr  SCLK     MCLK     Fan     Perf  PwrCap  VRAM%  GPU%
 ==============================End of ROCm SMI Log ==============================
 ```
 Use kill -9 -1 to kill the MatMul processes and all the tasks you can for your userid.  This will also kill any terminal sessions for your userid.
-
+# Windows 10 CUDA 10.2.2
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
 ```
 C:\dellmatmul>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu
@@ -156,4 +156,35 @@ C:\dellmatmul>dir
                3 Dir(s)  581,298,413,568 bytes free
 
 C:\dellmatmul>
+```
+# Windows 10 oneAPI dpc++
+Initialize oneAPI environment
+```
+c:\Program Files (x86)\Intel\oneAPI>setvars.bat
+:: initializing oneAPI environment...
+   initializing Visual Studio command-line environment...
+   Visual Studio version 16.10.0 environment configured.
+   Visual Studio environment initialized for: 'x64'
+:  advisor -- latest
+:  compiler -- latest
+:  dal -- latest
+:  debugger -- latest
+:  dev-utilities -- latest
+:  dnnl -- latest
+:  dpcpp-ct -- latest
+:  dpl -- latest
+:  inspector -- latest
+:  intelpython -- latest
+failed to create process.
+:  ipp -- latest
+:  ippcp -- latest
+:  itac -- latest
+:  mkl -- latest
+:  mpi -- latest
+:  tbb -- latest
+:  vpl -- latest
+:  vtune -- latest
+:: oneAPI environment initialized ::
+
+c:\Program Files (x86)\Intel\oneAPI>
 ```
