@@ -395,13 +395,4 @@ GPU-DOUBLE-GFLOPS/second 13.108323
 
 Experiment Done.
 -------------------------------
-
-c:\dellmatmul\cuda10-2-2\dpct_output>cd ..
-
-c:\dellmatmul\cuda10-2-2>dir
- Volume in drive C is OS
- Volume Serial Number is ECEE-F446
-
- Directory of c:\dellmatmul\cuda10-2-2
-
 ```
