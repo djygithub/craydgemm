@@ -126,7 +126,7 @@ GPU  Temp   AvgPwr  SCLK     MCLK     Fan     Perf  PwrCap  VRAM%  GPU%
 ==============================End of ROCm SMI Log ==============================
 ```
 Use kill -9 -1 to kill the MatMul processes and all the tasks you can for your userid.  This will also kill any terminal sessions for your userid.
-# Windows 10 CUDA 10.2.2 i7-7700 Nvidia gtx1050
+# Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
 ```
 C:\dellmatmul>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu
@@ -157,7 +157,7 @@ C:\dellmatmul>dir
 
 C:\dellmatmul>
 ```
-# Windows 10 cuda 10.2.2 oneAPI dpc++ I7-770 Intel HD-630
+# Windows 10 cuda 10.2.2 oneAPI dpc++ Intel I7-7700 Intel HD-630
 Initialize oneAPI environment
 ```
 c:\Program Files (x86)\Intel\oneAPI>setvars.bat
