@@ -325,3 +325,83 @@ c:\dellmatmul\cuda10-2-2\dpct_output>dir
 
 
 ```
+Execute
+```
+c:\dellmatmul\cuda10-2-2\dpct_output>matmuldblgpuwin.dp.exe 1000
+------ Matrix Dimensions ------
+dims a,b = 1000 , 1000
+info: allocate host mem ( 22.89 MB)
+info: device  mem ( 22.89 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks(  63,  63,   0)
+TOTAL GFLOPS 2.000000
+-------------------------------
+CPU took 1.359000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 1.471670
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.482100 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 4.148514
+
+Experiment Done.
+-------------------------------
+
+c:\dellmatmul\cuda10-2-2\dpct_output>matmuldblgpuwin.dp.exe 2000
+------ Matrix Dimensions ------
+dims a,b = 2000 , 2000
+info: allocate host mem ( 91.55 MB)
+info: device  mem ( 91.55 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 125, 125,   0)
+TOTAL GFLOPS 16.000000
+-------------------------------
+CPU took 32.469000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.492778
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 1.254604 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 12.753027
+
+Experiment Done.
+-------------------------------
+
+c:\dellmatmul\cuda10-2-2\dpct_output>matmuldblgpuwin.dp.exe 3000
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000
+info: allocate host mem (205.99 MB)
+info: device  mem (205.99 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL GFLOPS 54.000000
+-------------------------------
+CPU took 135.547000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.398386
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 4.119520 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 13.108323
+
+Experiment Done.
+-------------------------------
+
+c:\dellmatmul\cuda10-2-2\dpct_output>cd ..
+
+c:\dellmatmul\cuda10-2-2>dir
+ Volume in drive C is OS
+ Volume Serial Number is ECEE-F446
+
+ Directory of c:\dellmatmul\cuda10-2-2
+
+```
