@@ -157,6 +157,79 @@ C:\dellmatmul>dir
 
 C:\dellmatmul>
 ```
+Execute
+```
+c:\dellmatmul\cuda10-2-2>MatMulDblGpuWin.exe 1000
+------ Matrix Dimensions ------
+dims a,b = 1000 , 1000
+info: allocate host mem ( 22.89 MB)
+info: device  mem ( 22.89 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks(  63,  63,   0)
+TOTAL GFLOPS 2.000000
+-------------------------------
+CPU took 3.485000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.573888
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.041469 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 48.228879
+
+Experiment Done.
+-------------------------------
+
+c:\dellmatmul\cuda10-2-2>MatMulDblGpuWin.exe 2000
+------ Matrix Dimensions ------
+dims a,b = 2000 , 2000
+info: allocate host mem ( 91.55 MB)
+info: device  mem ( 91.55 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 125, 125,   0)
+TOTAL GFLOPS 16.000000
+-------------------------------
+CPU took 42.172000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.379399
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.278111 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 57.530996
+
+Experiment Done.
+-------------------------------
+
+c:\dellmatmul\cuda10-2-2>MatMulDblGpuWin.exe 3000
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000
+info: allocate host mem (205.99 MB)
+info: device  mem (205.99 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL GFLOPS 54.000000
+-------------------------------
+CPU took 154.031000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.350579
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.945665 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 57.102688
+
+Experiment Done.
+-------------------------------
+
+c:\dellmatmul\cuda10-2-2>
+```
 # Windows 10 cuda 10.2.2 oneAPI dpc++ Intel I7-7700 Intel HD-630
 Initialize oneAPI environment
 ```
