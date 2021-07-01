@@ -1,6 +1,6 @@
 # oneAPI/c++/cuda/hip DGEMM CPU/GPU heat/power/smoke test for windows and linux
 
-# linux/rocm/hip
+## linux/rocm/hip
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
 abc@djy:~/craydgemm$ unzip craydgemm.zip
@@ -126,7 +126,7 @@ GPU  Temp   AvgPwr  SCLK     MCLK     Fan     Perf  PwrCap  VRAM%  GPU%
 ==============================End of ROCm SMI Log ==============================
 ```
 Use kill -9 -1 to kill the MatMul processes and all the tasks you can for your userid.  This will also kill any terminal sessions for your userid.
-# Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
+## Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
 ```
 C:\dellmatmul>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu
@@ -230,7 +230,7 @@ Experiment Done.
 
 c:\dellmatmul\cuda10-2-2>
 ```
-# Windows 10 cuda 10.2.2 oneAPI dpc++ Intel I7-7700 Intel HD-630
+## Windows 10 cuda 10.2.2 oneAPI dpc++ Intel I7-7700 Intel HD-630
 Initialize oneAPI environment
 ```
 c:\Program Files (x86)\Intel\oneAPI>setvars.bat
