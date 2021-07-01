@@ -1,4 +1,4 @@
-# craydgemm
+# oneAPI/c++/cuda/hip DGEMM CPU/GPU test for windows and linux
 oneAPI/c++/cuda/hip double-precision DGEMM CPU/GPU heat/power/smoke test for windows and linux
 # linux/rocm/hip
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
