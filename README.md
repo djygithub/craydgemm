@@ -1,5 +1,5 @@
 # craydgemm
-c++/cuda/hip double-precision DGEMM CPU/GPU heat/power/smoke test for windows and linux
+oneAPI/c++/cuda/hip double-precision DGEMM CPU/GPU heat/power/smoke test for windows and linux
 # linux/rocm/hip
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
@@ -187,4 +187,141 @@ failed to create process.
 :: oneAPI environment initialized ::
 
 c:\Program Files (x86)\Intel\oneAPI>
+```
+ Intel® DPC++ Compatibility Tool
+```
+c:\dellmatmul\cuda10-2-2>dpct MatMulDblGpuWin.cu
+NOTE: Could not auto-detect compilation database for file 'MatMulDblGpuWin.cu' in 'c:\dellmatmul\cuda10-2-2' or any parent directory.
+The directory "dpct_output" is used as "out-root"
+Processing: c:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:150:27: warning: DPCT1048:0: The original value cudaHostAllocDefault is not meaningful in the migrated code and was removed or replaced with 0. You may need to check the migrated code.
+        cudaHostAlloc(&a,bytes_a,cudaHostAllocDefault);
+                                 ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:153:27: warning: DPCT1048:1: The original value cudaHostAllocDefault is not meaningful in the migrated code and was removed or replaced with 0. You may need to check the migrated code.
+        cudaHostAlloc(&b,bytes_b,cudaHostAllocDefault);
+                                 ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:156:27: warning: DPCT1048:2: The original value cudaHostAllocDefault is not meaningful in the migrated code and was removed or replaced with 0. You may need to check the migrated code.
+        cudaHostAlloc(&c,bytes_c,cudaHostAllocDefault);
+                                 ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:110:15: warning: DPCT1008:3: clock function is not defined in the DPC++. This is a hardware-specific feature. Consult with your hardware vendor to find a replacement.
+        return ((int)clock())/((int)CLOCKS_PER_SEC);
+                     ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:134:2: warning: DPCT1026:4: The call to cudaEventCreate was removed, because this call is redundant in DPC++.
+        cudaEventCreate(&start);
+        ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:135:2: warning: DPCT1026:5: The call to cudaEventCreate was removed, because this call is redundant in DPC++.
+        cudaEventCreate(&stop);
+        ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:136:9: warning: DPCT1026:6: The call to cudaEventCreate was removed, because this call is redundant in DPC++.
+        cudaEventCreate(&startcpu);
+        ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:137:2: warning: DPCT1026:7: The call to cudaEventCreate was removed, because this call is redundant in DPC++.
+        cudaEventCreate(&stopcpu);
+        ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:197:2: warning: DPCT1012:8: Detected kernel execution time measurement pattern and generated an initial code for time measurements in SYCL. You can change the way time is measured depending on your goals.
+        cudaEventRecord(start, 0);
+        ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:203:9: warning: DPCT1049:9: The workgroup size passed to the SYCL kernel may exceed the limit. To get the device limit, query info::device::max_work_group_size. Adjust the workgroup size if needed.
+        matmul_kernel<<< blks, NUM_THREADS>>> (len_a , d_a , d_b , d_c);
+        ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:205:2: warning: DPCT1012:10: Detected kernel execution time measurement pattern and generated an initial code for time measurements in SYCL. You can change the way time is measured depending on your goals.
+        cudaEventRecord(stop, 0);
+        ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:47:55: warning: DPCT1009:11: SYCL uses exceptions to report errors and does not use the error codes. The original code was commented out and a warning string was inserted. You need to rewrite this code.
+        fprintf(stderr, "error: '%s'(%d) at %s:%d\n", cudaGetErrorString(error), error,__FILE__, __LINE__); \
+                                                      ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:160:8: warning: DPCT1003:12: Migrated API does not return error code. (*, 0) is inserted. You may need to rewrite this code.
+        CHECK(cudaMalloc( &d_a , bytes_a ));  //must be pointer to the point, since the actual point value is being changed, not the value it points to
+              ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:161:8: warning: DPCT1003:13: Migrated API does not return error code. (*, 0) is inserted. You may need to rewrite this code.
+        CHECK(cudaMalloc( &d_b , bytes_b ));
+              ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:162:8: warning: DPCT1003:14: Migrated API does not return error code. (*, 0) is inserted. You may need to rewrite this code.
+        CHECK(cudaMalloc( &d_c , bytes_c ));
+              ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:213:5: warning: DPCT1010:15: SYCL uses exceptions to report errors and does not use the error codes. The call was replaced with 0. You need to rewrite this code.
+        if(cudaPeekAtLastError()){
+           ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:214:29: warning: DPCT1009:16: SYCL uses exceptions to report errors and does not use the error codes. The original code was commented out and a warning string was inserted. You need to rewrite this code.
+                printf("CUDA ERROR, %s\n",cudaGetErrorString(cudaPeekAtLastError()));
+                                          ^
+C:\dellmatmul\cuda10-2-2\MatMulDblGpuWin.cu:214:48: warning: DPCT1010:17: SYCL uses exceptions to report errors and does not use the error codes. The call was replaced with 0. You need to rewrite this code.
+                printf("CUDA ERROR, %s\n",cudaGetErrorString(cudaPeekAtLastError()));
+                                                             ^
+Processed 1 file(s) in -in-root folder "C:\dellmatmul\cuda10-2-2"
+
+See Diagnostics Reference to resolve warnings and complete the migration:
+https://software.intel.com/content/www/us/en/develop/documentation/intel-dpcpp-compatibility-tool-user-guide/top/diagnostics-reference.html
+```
+Compile with dpc++
+```
+c:\dellmatmul\cuda10-2-2\dpct_output>dpcpp matmuldblgpuwin.dp.cpp /EHsc
+matmuldblgpuwin.dp.cpp(233,16): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+               ^~~~~~~~~~~~~~
+matmuldblgpuwin.dp.cpp(233,32): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                               ^~~~~~~~~~~~~~
+matmuldblgpuwin.dp.cpp(233,48): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                               ^~~~~~~
+matmuldblgpuwin.dp.cpp(233,57): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                                        ^~~~~~~
+4 warnings generated.
+matmuldblgpuwin.dp.cpp(233,16): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+               ^~~~~~~~~~~~~~
+matmuldblgpuwin.dp.cpp(233,32): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                               ^~~~~~~~~~~~~~
+matmuldblgpuwin.dp.cpp(233,48): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                               ^~~~~~~
+matmuldblgpuwin.dp.cpp(233,57): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                                        ^~~~~~~
+4 warnings generated.
+matmuldblgpuwin.dp.cpp(233,16): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+               ^~~~~~~~~~~~~~
+matmuldblgpuwin.dp.cpp(233,32): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                               ^~~~~~~~~~~~~~
+matmuldblgpuwin.dp.cpp(233,48): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                               ^~~~~~~
+matmuldblgpuwin.dp.cpp(233,57): warning: format specifies type 'unsigned int' but the argument has type 'size_t'
+      (aka 'unsigned long long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                                        ^~~~~~~
+4 warnings generated.
+
+c:\dellmatmul\cuda10-2-2\dpct_output>dir
+ Volume in drive C is OS
+ Volume Serial Number is ECEE-F446
+
+ Directory of c:\dellmatmul\cuda10-2-2\dpct_output
+
+06/30/2021  05:13 PM    <DIR>          .
+06/30/2021  05:13 PM    <DIR>          ..
+06/30/2021  05:08 PM    <DIR>          dpct_output
+06/30/2021  05:02 PM            35,396 MainSourceFiles.yaml
+06/30/2021  05:02 PM            11,127 matmuldblgpuwin.dp.cpp
+06/30/2021  05:13 PM            87,552 matmuldblgpuwin.dp.exe
+               3 File(s)        134,075 bytes
+               3 Dir(s)  316,539,334,656 bytes free
+
+
 ```
