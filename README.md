@@ -469,3 +469,98 @@ GPU-DOUBLE-GFLOPS/second 13.108323
 Experiment Done.
 -------------------------------
 ```
+## linux oneAPI CUDA backend
+Compile
+```
+david@i77700:~/dellmatmul/oneapi/dpct_output$ clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda-sycldevice matmul.dp.cpp -o matmul.dp.exe -std=c++17 -fsycl-unnamed-lambda
+clang-13: warning: Unknown CUDA version. version.txt: 10.2.89. Assuming the latest supported version 10.1 [-Wunknown-cuda-version]
+In file included from matmul.dp.cpp:2:
+In file included from /home/david/includes/oneapi/dpct.hpp:17:
+/home/david/includes/oneapi/device.hpp:203:9: warning: 'has_extension' is deprecated: use device::has() function with aspects APIs instead [-Wdeprecated-declarations]
+    if (has_extension("cl_intel_required_subgroup_size")) {
+        ^
+/home/david/llvm/build/bin/../include/sycl/CL/sycl/device.hpp:164:3: note: 'has_extension' has been explicitly marked deprecated here
+  __SYCL2020_DEPRECATED("use device::has() function with aspects APIs instead")
+  ^
+/home/david/llvm/build/bin/../include/sycl/CL/sycl/detail/defines_elementary.hpp:52:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+#define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+                                       ^
+/home/david/llvm/build/bin/../include/sycl/CL/sycl/detail/defines_elementary.hpp:43:38: note: expanded from macro '__SYCL_DEPRECATED'
+#define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+                                     ^
+matmul.dp.cpp:197:16: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+               ^~~~~~~~~~~~~~
+matmul.dp.cpp:197:32: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                               ^~~~~~~~~~~~~~
+matmul.dp.cpp:197:48: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                               ^~~~~~~
+matmul.dp.cpp:197:57: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                                        ^~~~~~~
+5 warnings generated.
+In file included from matmul.dp.cpp:2:
+In file included from /home/david/includes/oneapi/dpct.hpp:17:
+/home/david/includes/oneapi/device.hpp:203:9: warning: 'has_extension' is deprecated: use device::has() function with aspects APIs instead [-Wdeprecated-declarations]
+    if (has_extension("cl_intel_required_subgroup_size")) {
+        ^
+/home/david/llvm/build/bin/../include/sycl/CL/sycl/device.hpp:164:5: note: 'has_extension' has been explicitly marked deprecated here
+  [[deprecated("use device::has() function with aspects APIs instead")]]
+    ^
+matmul.dp.cpp:197:16: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+               ^~~~~~~~~~~~~~
+matmul.dp.cpp:197:32: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                               ^~~~~~~~~~~~~~
+matmul.dp.cpp:197:48: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                               ^~~~~~~
+matmul.dp.cpp:197:57: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+               NUM_THREADS[2], NUM_THREADS[1], blks[2], blks[1]);
+                                                        ^~~~~~~
+5 warnings generated.
+david@i77700:~/dellmatmul/oneapi/dpct_output$ ll
+total 420
+drwxrwx--- 2 david render   4096 Jul  6 03:28 ./
+drwxrwxr-x 3 david david    4096 Jul  4 15:46 ../
+-rwxrwxr-x 1 david render 169840 Jul  4 15:47 a.out*
+-rw-rw-r-- 1 david render  37104 Jul  4 15:46 MainSourceFiles.yaml
+-rw-rw-r-- 1 david render  10015 Jul  4 23:27 matmul.dp.cpp
+-rwxrwxr-x 1 david david  192904 Jul  6 03:28 matmul.dp.exe*
+david@i77700:~/dellmatmul/oneapi/dpct_output$
+```
+Execute
+```
+david@i77700:~/dellmatmul/oneapi/dpct_output$ SYCL_BE=PI_CUDA  ./matmul.dp.exe 1000
+
+WARNING: The legacy environment variables SYCL_BE and SYCL_DEVICE_TYPE are deprecated. Please use SYCL_DEVICE_FILTER instead. For details, please refer to https://github.com/intel/llvm/blob/sycl/sycl/doc/EnvironmentVariables.md
+
+------ Matrix Dimensions ------
+dims a,b = 1000 , 1000 
+info: allocate host mem ( 22.89 MB)
+info: device  mem ( 22.89 MB)
+Filling in 2D arrays a and b 
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks(  63,  63,   0)
+TOTAL DBLOPS 2000000000.000000 
+-------------------------------
+
+Calling CPU Matrix Multiply 
+
+CPU took 3.328202 seconds as computed by gettimeofday() function
+CPU-GDBLOPS/second 0.600925 
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.134232 seconds as computed by CudaEvent function
+GPU-GDBLOPS/second 14.899591 
+
+Experiment Done.
+-------------------------------
+david@i77700:~/dellmatmul/oneapi/dpct_output$
+```
