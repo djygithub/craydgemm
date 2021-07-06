@@ -469,7 +469,7 @@ GPU-DOUBLE-GFLOPS/second 13.108323
 Experiment Done.
 -------------------------------
 ```
-## linux oneAPI CUDA backend
+## linux oneAPI CUDA backend I7-7700 GTX-1050
 Compile
 ```
 david@i77700:~/dellmatmul/oneapi/dpct_output$ clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda-sycldevice matmul.dp.cpp -o matmul.dp.exe -std=c++17 -fsycl-unnamed-lambda
@@ -563,4 +563,31 @@ GPU-GDBLOPS/second 14.899591
 Experiment Done.
 -------------------------------
 david@i77700:~/dellmatmul/oneapi/dpct_output$
+```
+Platforms and Devices
+```
+david@i77700:~/oneapidiags$ SYCL_BE=PI_CUDA  ./test.dp.exe 
+
+WARNING: The legacy environment variables SYCL_BE and SYCL_DEVICE_TYPE are deprecated. Please use SYCL_DEVICE_FILTER instead. For details, please refer to https://github.com/intel/llvm/blob/sycl/sycl/doc/EnvironmentVariables.md
+
+Platform: Intel(R) OpenCL HD Graphics
+  Device: Intel(R) HD Graphics 630 [0x5912]
+Platform: Intel(R) Level-Zero
+  Device: Intel(R) HD Graphics 630 [0x5912]
+Platform: NVIDIA CUDA BACKEND
+  Device: GeForce GTX 1050
+Platform: SYCL host platform
+  Device: SYCL host device
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+david@i77700:~/oneapidiags$ 
+
 ```
