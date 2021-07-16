@@ -470,9 +470,11 @@ Experiment Done.
 -------------------------------
 ```
 ## linux oneAPI CUDA backend I7-7700 GTX-1050
-Compile clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda-sycldevice matmul.dp.cpp -o matmul.dp.exe -std=c++17 -fsycl-unnamed-lambda
-
+Compile
 ```
+clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda-sycldevice matmul.dp.cpp -o matmul.dp.exe -std=c++17 -fsycl-unnamed-lambda
+
+
 david@i77700:~/dellmatmul/oneapi/dpct_output$ clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda-sycldevice matmul.dp.cpp -o matmul.dp.exe -std=c++17 -fsycl-unnamed-lambda
 clang-13: warning: Unknown CUDA version. version.txt: 10.2.89. Assuming the latest supported version 10.1 [-Wunknown-cuda-version]
 In file included from matmul.dp.cpp:2:
