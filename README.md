@@ -230,6 +230,139 @@ Experiment Done.
 
 c:\dellmatmul\cuda10-2-2>
 ```
+Use NVPROF to gather kernel times and API statistics 
+```
+c:\dellmatmul\cuda10-2-2>nvprof MatMulDblGpuWin.exe 3000
+==15432== NVPROF is profiling process 15432, command: MatMulDblGpuWin.exe 3000
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000
+info: allocate host mem (205.99 MB)
+info: device  mem (205.99 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL GFLOPS 54.000000
+-------------------------------
+CPU took 155.235000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.347860
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.969663 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 55.689426
+
+Experiment Done.
+-------------------------------
+==15432== Profiling application: MatMulDblGpuWin.exe 3000
+==15432== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   98.28%  952.81ms         1  952.81ms  952.81ms  952.81ms  matmul_kernel(long, double*, double*, double*)
+                    1.14%  11.006ms         2  5.5032ms  5.4693ms  5.5370ms  [CUDA memcpy HtoD]
+                    0.58%  5.6509ms         1  5.6509ms  5.6509ms  5.6509ms  [CUDA memcpy DtoH]
+      API calls:   79.27%  969.71ms         3  323.24ms  5.5178ms  958.52ms  cudaMemcpy
+                   10.90%  133.30ms         4  33.325ms     500ns  133.30ms  cudaEventCreate
+                    4.77%  58.369ms         1  58.369ms  58.369ms  58.369ms  cuDevicePrimaryCtxRelease
+                    4.11%  50.332ms         3  16.777ms  16.504ms  17.008ms  cudaHostAlloc
+                    0.87%  10.600ms         3  3.5333ms  3.4948ms  3.5529ms  cudaMalloc
+                    0.05%  648.90us         3  216.30us  158.50us  305.80us  cudaFree
+                    0.01%  113.00us         1  113.00us  113.00us  113.00us  cuModuleUnload
+                    0.01%  75.600us         1  75.600us  75.600us  75.600us  cudaLaunchKernel
+                    0.00%  47.300us         2  23.650us  9.6000us  37.700us  cudaEventRecord
+                    0.00%  44.500us         1  44.500us  44.500us  44.500us  cudaEventSynchronize
+                    0.00%  17.500us         1  17.500us  17.500us  17.500us  cudaEventElapsedTime
+                    0.00%  15.300us         1  15.300us  15.300us  15.300us  cuDeviceTotalMem
+                    0.00%  14.800us        97     152ns     100ns  1.0000us  cuDeviceGetAttribute
+                    0.00%  7.2000us         3  2.4000us     300ns  5.9000us  cuDeviceGetCount
+                    0.00%  2.3000us         1  2.3000us  2.3000us  2.3000us  cuDeviceGetName
+                    0.00%  1.9000us         2     950ns     200ns  1.7000us  cuDeviceGet
+                    0.00%  1.1000us         1  1.1000us  1.1000us  1.1000us  cudaPeekAtLastError
+                    0.00%     300ns         1     300ns     300ns     300ns  cuDeviceGetLuid
+                    0.00%     200ns         1     200ns     200ns     200ns  cuDeviceGetUuid
+
+c:\dellmatmul\cuda10-2-2>
+```
+Use NVPROF to capture double precision flops, memory reads, and memory writes
+```
+c:\dellmatmul\cuda10-2-2>nvprof --profile-child-processes --metrics flop_count_dp  --metrics dram_read_transactions  --metrics dram_write_transactions MatMulDblGpuWin.exe 3000
+==14804== NVPROF is profiling process 14804, command: MatMulDblGpuWin.exe 3000
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000
+info: allocate host mem (205.99 MB)
+info: device  mem (205.99 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL GFLOPS 54.000000
+-------------------------------
+CPU took 154.156000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.350295
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+==14804== Some kernel(s) will be replayed on device 0 in order to collect all events/metrics.
+==14804== Replaying kernel "matmul_kernel(long, double*, double*, double*)" (done)
+
+GPU took 9.038890 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 5.974185
+        fb_subp1_write_sectors
+Experiment Done.
+-------------------------------
+==14804== Profiling application: MatMulDblGpuWin.exe 3000
+==14804== Profiling result:
+==14804== Metric result:
+Invocations                               Metric Name                            Metric Description         Min         Max         Avg
+Device "GeForce GTX 1050 (0)"
+    Kernel: matmul_kernel(long, double*, double*, double*)
+          1                             flop_count_dp   Floating Point Operations(Double Precision)  5.4000e+10  5.4000e+10  5.4000e+10
+          1                    dram_read_transactions               Device Memory Read Transactions   758691589   758691589   758691589
+          1                   dram_write_transactions              Device Memory Write Transactions     2572521     2572521     2572521
+
+c:\dellmatmul\cuda10-2-2
+```
+Use NVPROF to gather CPU to GPU data movement and kernel statistics
+```
+c:\dellmatmul\cuda10-2-2>nvprof --print-gpu-trace MatMulDblGpuWin.exe 3000
+==15580== NVPROF is profiling process 15580, command: MatMulDblGpuWin.exe 3000
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000
+info: allocate host mem (205.99 MB)
+info: device  mem (205.99 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL GFLOPS 54.000000
+-------------------------------
+CPU took 154.265000 seconds as computed by gettickcount
+CPU-DOUBLE-GFLOPS/second 0.350047
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.951331 seconds as computed by CudaEvent function
+GPU-DOUBLE-GFLOPS/second 56.762563
+
+Experiment Done.
+-------------------------------
+==15580== Profiling application: MatMulDblGpuWin.exe 3000
+==15580== Profiling result:
+   Start  Duration            Grid Size      Block Size     Regs*    SSMem*    DSMem*      Size  Throughput  SrcMemType  DstMemType           Device   Context    Stream  Name
+154.623s  5.5340ms                    -               -         -         -         -  68.665MB  12.117GB/s      Pinned      Device  GeForce GTX 105         1         7  [CUDA memcpy HtoD]
+154.629s  5.4815ms                    -               -         -         -         -  68.665MB  12.233GB/s      Pinned      Device  GeForce GTX 105         1         7  [CUDA memcpy HtoD]
+154.634s  934.47ms          (188 188 1)       (16 16 1)        32        0B        0B         -           -           -           -  GeForce GTX 105         1         7  matmul_kernel(long, double*, double*, double*) [120]
+155.569s  5.6524ms                    -               -         -         -         -  68.665MB  11.863GB/s      Device      Pinned  GeForce GTX 105         1         7  [CUDA memcpy DtoH]
+
+Regs: Number of registers used per CUDA thread. This number includes registers used internally by the CUDA driver and/or tools and can be more than what the compiler shows.
+SSMem: Static shared memory allocated per CUDA block.
+DSMem: Dynamic shared memory allocated per CUDA block.
+SrcMemType: The type of source memory accessed by memory operation/copy
+DstMemType: The type of destination memory accessed by memory operation/copy
+
+c:\dellmatmul\cuda10-2-2>
+```
 ## Windows 10 cuda 10.2.2 oneAPI dpc++ Intel I7-7700 Intel HD-630
 Initialize oneAPI environment
 ```
