@@ -381,7 +381,6 @@ c:\Program Files (x86)\Intel\oneAPI>setvars.bat
 :  dpl -- latest
 :  inspector -- latest
 :  intelpython -- latest
-failed to create process.
 :  ipp -- latest
 :  ippcp -- latest
 :  itac -- latest
