@@ -237,6 +237,7 @@ hipPeekAtLastError,1,391,391,5.096501626115748e-05
 david@ryzen:~/craydgemm/craydgemm$
 
 ```
+Use chrome tracing to display results.json
 ![chrome tracing](http://davidjyoung.com/cmg/rocprof.json.JPG)
 ## Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
