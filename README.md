@@ -126,6 +126,56 @@ GPU  Temp   AvgPwr  SCLK     MCLK     Fan     Perf  PwrCap  VRAM%  GPU%
 ==============================End of ROCm SMI Log ==============================
 ```
 Use kill -9 -1 to kill the MatMul processes and all the tasks you can for your userid.  This will also kill any terminal sessions for your userid.
+
+Use rocprof to gather basic data movement and kernel statistics.
+```
+david@ryzen:~/craydgemm/craydgemm$ rocprof --stats ./mmdblgpugiops 3000
+RPL: on '220101_123501' from '/opt/rocm-4.1.0/rocprofiler' in '/home/david/craydgemm/craydgemm'
+RPL: profiling '"./mmdblgpugiops" "3000"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_220101_123501_1914'
+RPL: result dir '/tmp/rpl_data_220101_123501_1914/input_results_220101_123501'
+ROCProfiler: input from "/tmp/rpl_data_220101_123501_1914/input.xml"
+  0 metrics
+  0 traces
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000
+info: allocate host mem (205.99 MB)
+info: device  mem (205.99 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL DBLOPS 54000000000.000000
+-------------------------------
+
+Calling CPU Matrix Multiply
+
+CPU took 0.000001 seconds as computed by gettimeofday() function
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.464849 seconds as computed by CudaEvent function
+GPU-GDBLOPS/second 116.166786
+
+Experiment Done.
+-------------------------------
+
+ROCPRofiler: 1 contexts collected, output directory /tmp/rpl_data_220101_123501_1914/input_results_220101_123501
+File '/home/david/craydgemm/craydgemm/results.csv' is generating
+File '/home/david/craydgemm/craydgemm/results.stats.csv' is generating
+david@ryzen:~/craydgemm/craydgemm$ 
+david@ryzen:~/craydgemm/craydgemm$ cat results.copy_stats.csv
+"Name","Calls","TotalDurationNs","AverageNs","Percentage"
+CopyHostToDevice,2,24870831,12435415,68.17713214183681
+CopyDeviceToHost,1,11608895,11608895,31.82286785816319
+david@ryzen:~/craydgemm/craydgemm$ cat results.stats.csv
+"Name","Calls","TotalDurationNs","AverageNs","Percentage"
+matmul_kernel(long, double*, double*, double*),1,421948927,421948927,100.0
+"<barrier packet>",2,0,0,0.0
+david@ryzen:~/craydgemm/craydgemm$
+```
 ## Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
 ```
