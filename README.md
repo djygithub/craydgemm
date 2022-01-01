@@ -165,7 +165,53 @@ Experiment Done.
 ROCPRofiler: 1 contexts collected, output directory /tmp/rpl_data_220101_123501_1914/input_results_220101_123501
 File '/home/david/craydgemm/craydgemm/results.csv' is generating
 File '/home/david/craydgemm/craydgemm/results.stats.csv' is generating
-david@ryzen:~/craydgemm/craydgemm$ 
+```
+Use rocprof to gather hip-trace statistics
+```
+david@ryzen:~/craydgemm/craydgemm$ rocprof --hip-trace ./mmdblgpugiops 3000
+RPL: on '220101_123524' from '/opt/rocm-4.1.0/rocprofiler' in '/home/david/craydgemm/craydgemm'
+RPL: profiling '"./mmdblgpugiops" "3000"'
+RPL: input file ''
+RPL: output dir '/tmp/rpl_data_220101_123524_1975'
+RPL: result dir '/tmp/rpl_data_220101_123524_1975/input_results_220101_123524'
+ROCTracer (pid=1997):
+    HIP-trace()
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000
+info: allocate host mem (205.99 MB)
+info: device  mem (205.99 MB)
+Filling in 2D arrays a and b
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL DBLOPS 54000000000.000000
+-------------------------------
+
+Calling CPU Matrix Multiply
+
+CPU took 0.000000 seconds as computed by gettimeofday() function
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+
+GPU took 0.459683 seconds as computed by CudaEvent function
+GPU-GDBLOPS/second 117.472379
+
+Experiment Done.
+-------------------------------
+START timestamp found (141387932775ns)
+scan ops data 5:6                                                                                                    File '/home/david/                             craydgemm/craydgemm/results.copy_stats.csv' is generating
+dump json 2:3
+File '/home/david/craydgemm/craydgemm/results.json' is generating
+File '/home/david/craydgemm/craydgemm/results.hip_stats.csv' is generating
+dump json 21:22
+File '/home/david/craydgemm/craydgemm/results.json' is generating
+File '/home/david/craydgemm/craydgemm/results.stats.csv' is generating
+dump json 2:3
+File '/home/david/craydgemm/craydgemm/results.json' is generating
+```
+Display rocprof statistics at command line
+```
 david@ryzen:~/craydgemm/craydgemm$ cat results.copy_stats.csv
 "Name","Calls","TotalDurationNs","AverageNs","Percentage"
 CopyHostToDevice,2,24870831,12435415,68.17713214183681
@@ -174,7 +220,22 @@ david@ryzen:~/craydgemm/craydgemm$ cat results.stats.csv
 "Name","Calls","TotalDurationNs","AverageNs","Percentage"
 matmul_kernel(long, double*, double*, double*),1,421948927,421948927,100.0
 "<barrier packet>",2,0,0,0.0
+david@ryzen:~/craydgemm/craydgemm$ cat results.hip_stats.csv
+"Name","Calls","TotalDurationNs","AverageNs","Percentage"
+hipMemcpy,3,463859920,154619973,60.46196512966549
+hipEventRecord,2,261542935,130771467,34.09089497510448
+hipHostMalloc,3,39756067,13252022,5.182016882697356
+hipMalloc,3,1471299,490433,0.19177692445019112
+hipLaunchKernel,1,481273,481273,0.06273167844259857
+hipFree,3,68759,22919,0.008962413179286258
+__hipPushCallConfiguration,1,4098,4098,0.0005341550809161722
+hipEventCreate,2,3637,1818,0.0004740658929458561
+hipEventSynchronize,1,2875,2875,0.0003747427666261579
+hipEventElapsedTime,1,992,992,0.00012930254764979084
+__hipPopCallConfiguration,1,681,681,8.876515619910036e-05
+hipPeekAtLastError,1,391,391,5.096501626115748e-05
 david@ryzen:~/craydgemm/craydgemm$
+
 ```
 ## Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
