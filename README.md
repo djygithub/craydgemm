@@ -127,7 +127,8 @@ GPU  Temp   AvgPwr  SCLK     MCLK     Fan     Perf  PwrCap  VRAM%  GPU%
 ```
 Use kill -9 -1 to kill the MatMul processes and all the tasks you can for your userid.  This will also kill any terminal sessions for your userid.
 
-Use rocprof to gather basic data movement and kernel statistics.
+Use rocprof to gather basic data movement,kernel, and hip statistics. 
+https://www.olcf.ornl.gov/wp-content/uploads/2021/04/SPOCK_Libraries_profiling_JMaia.pdf
 ```
 david@ryzen:~/craydgemm/craydgemm$ rocprof --stats ./mmdblgpugiops 3000
 RPL: on '220101_123501' from '/opt/rocm-4.1.0/rocprofiler' in '/home/david/craydgemm/craydgemm'
