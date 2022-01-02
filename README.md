@@ -840,3 +840,97 @@ Platform: SYCL host platform
 david@i77700:~/oneapidiags$ 
 
 ```
+Use ze_tracer to gather API statistics - https://github.com/intel/pti-gpu/tree/master/tools/ze_tracer
+```
+david@i77700:~/pti-gpu/tools/ze_tracer/build$ ./ze_tracer -c -h -v /home/david/dellmatmul/oneapi/dpct_output/a.out 3000
+.
+------ Matrix Dimensions ------
+dims a,b = 3000 , 3000 
+info: allocate host mem (205.99 MB)
+.
+info: device  mem (205.99 MB)
+>>>> [329809155] zeMemAllocDevice: hContext = 0xc45c90 device_desc = 0x7ffcf0088d50 {UNKNOWN(0x0) 0 0 0} size = 72000000 alignment = 8 hDevice = 0xa1d4b0 pptr = 0x7ffcf0088da8 (ptr = 0)
+<<<< [329847335] zeMemAllocDevice [38180 ns] ptr = 0xffffaaad55410000 -> ZE_RESULT_SUCCESS(0x0)
+>>>> [329856451] zeMemAllocDevice: hContext = 0xc45c90 device_desc = 0x7ffcf0088d50 {UNKNOWN(0x0) 0 0 0} size = 72000000 alignment = 8 hDevice = 0xa1d4b0 pptr = 0x7ffcf0088da8 (ptr = 0)
+<<<< [329877701] zeMemAllocDevice [21250 ns] ptr = 0xffffaaad598c0000 -> ZE_RESULT_SUCCESS(0x0)
+>>>> [329883528] zeMemAllocDevice: hContext = 0xc45c90 device_desc = 0x7ffcf0088d50 {UNKNOWN(0x0) 0 0 0} size = 72000000 alignment = 8 hDevice = 0xa1d4b0 pptr = 0x7ffcf0088da8 (ptr = 0)
+<<<< [329890890] zeMemAllocDevice [7362 ns] ptr = 0xffffaaad5dd70000 -> ZE_RESULT_SUCCESS(0x0)
+Filling in 2D arrays a and b 
+Filling Complete
+------- CUDA Parameters -------
+NUM_THREADS(  16,  16,   0)
+       blks( 188, 188,   0)
+TOTAL DBLOPS 54000000000.000000 
+-------------------------------
+
+Calling CPU Matrix Multiply 
+
+CPU took 142.814397 seconds as computed by gettimeofday() function
+CPU-GDBLOPS/second 0.378113 
+
+CPU Matrix multiplication completed. Time to launch GPU kernel.
+.
+>>>> [143156646536] zeCommandListAppendMemoryCopy: hCommandList = 0xcdd720 dstptr = 0xffffaaad55410000 srcptr = 0x7fb8f84bf000 size = 72000000 hSignalEvent = 0x2186110 numWaitEvents = 0 phWaitEvents = 0
+<<<< [143156771801] zeCommandListAppendMemoryCopy [125265 ns] -> ZE_RESULT_SUCCESS(0x0)
+.
+>>>> [143174946258] zeCommandListAppendMemoryCopy: hCommandList = 0xcdd720 dstptr = 0xffffaaad598c0000 srcptr = 0x7fb8f400d000 size = 72000000 hSignalEvent = 0x2171be0 numWaitEvents = 0 phWaitEvents = 0
+<<<< [143174963119] zeCommandListAppendMemoryCopy [16861 ns] -> ZE_RESULT_SUCCESS(0x0)
+.
+>>>> [143300339680] zeCommandListAppendMemoryCopy: hCommandList = 0x2e7ddf0 dstptr = 0x7fb8f400d000 srcptr = 0xffffaaad5dd70000 size = 72000000 hSignalEvent = 0x2b01c90 numWaitEvents = 0 phWaitEvents = 0
+<<<< [143300353749] zeCommandListAppendMemoryCopy [14069 ns] -> ZE_RESULT_SUCCESS(0x0)
+.
+GPU took 4.681859 seconds as computed by CudaEvent function
+GPU-GDBLOPS/second 11.533880 
+
+Experiment Done.
+-------------------------------
+=== API Timing Results: ===
+
+Total Execution Time (ns):         147840060741
+      Total API Time (ns):           4710111445
+
+                              Function,       Calls,           Time (ns),  Time (%),        Average (ns),            Min (ns),            Max (ns)
+                zeEventHostSynchronize,           4,          4551000472,     96.62,          1137750118,                3790,          4537845443
+                        zeModuleCreate,           1,            99171288,      2.11,            99171288,            99171288,            99171288
+     zeCommandQueueExecuteCommandLists,           4,            30621716,      0.65,             7655429,               33195,            10319992
+                        zeMemAllocHost,           3,            28266066,      0.60,             9422022,             9283517,             9618434
+          zeCommandListCreateImmediate,           1,              181099,      0.00,              181099,              181099,              181099
+         zeCommandListAppendMemoryCopy,           3,              156195,      0.00,               52065,               14069,              125265
+                  zeCommandQueueCreate,           1,              139411,      0.00,              139411,              139411,              139411
+                   zeCommandListCreate,           2,               91209,      0.00,               45604,               43169,               48040
+                      zeMemAllocDevice,           3,               66792,      0.00,               22264,                7362,               38180
+                                zeInit,           1,               33355,      0.00,               33355,               33355,               33355
+           zeDeviceGetMemoryProperties,          10,               33234,      0.00,                3323,                2983,                4230
+                             zeMemFree,           3,               32988,      0.00,               10996,                5992,               20319
+                    zeCommandListReset,           4,               32336,      0.00,                8084,                4063,               11450
+            zeDeviceGetCacheProperties,          10,               30209,      0.00,                3020,                2827,                3755
+                         zeEventCreate,           4,               28888,      0.00,                7222,                5661,                9020
+                    zeFenceQueryStatus,           5,               18034,      0.00,                3606,                2744,                4171
+              zeKernelSetArgumentValue,           4,               17280,      0.00,                4320,                3443,                6612
+           zeDeviceGetModuleProperties,           5,               16976,      0.00,                3395,                2964,                4674
+       zeCommandListAppendLaunchKernel,           1,               15822,      0.00,               15822,               15822,               15822
+                    zeCommandListClose,           4,               15482,      0.00,                3870,                2818,                4407
+                         zeFenceCreate,           2,               15138,      0.00,                7569,                7014,                8124
+            zeDeviceGetImageProperties,           5,               13425,      0.00,                2685,                2515,                2782
+               zeMemGetAllocProperties,           3,               11962,      0.00,                3987,                3074,                5689
+                          zeFenceReset,           4,               10056,      0.00,                2514,                2317,                2693
+                     zeEventPoolCreate,           1,                9749,      0.00,                9749,                9749,                9749
+                       zeContextCreate,           1,                9127,      0.00,                9127,                9127,                9127
+                        zeKernelCreate,           1,                8492,      0.00,                8492,                8492,                8492
+zeDeviceGetCommandQueueGroupProperties,           2,                7969,      0.00,                3984,                3605,                4364
+        zeDriverGetExtensionProperties,           2,                7520,      0.00,                3760,                3700,                3820
+                           zeDeviceGet,           2,                7215,      0.00,                3607,                3119,                4096
+                           zeDriverGet,           2,                6588,      0.00,                3294,                2797,                3791
+                 zeDeviceGetSubDevices,           2,                5977,      0.00,                2988,                2640,                3337
+                 zeDriverGetProperties,           1,                4506,      0.00,                4506,                4506,                4506
+                  zeKernelSetGroupSize,           1,                4375,      0.00,                4375,                4375,                4375
+       zeCommandListAppendWaitOnEvents,           1,                4101,      0.00,                4101,                4101,                4101
+                 zeDeviceGetProperties,           1,                3778,      0.00,                3778,                3778,                3778
+             zeKernelSetIndirectAccess,           1,                3680,      0.00,                3680,                3680,                3680
+                 zeKernelGetProperties,           1,                3610,      0.00,                3610,                3610,                3610
+          zeDeviceGetComputeProperties,           1,                2773,      0.00,                2773,                2773,                2773
+                 zeDriverGetApiVersion,           1,                2552,      0.00,                2552,                2552,                2552
+
+david@i77700:~/pti-gpu/tools/ze_tracer/build$ == API Timing Results: ===
+
+```
