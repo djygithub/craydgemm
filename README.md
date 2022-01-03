@@ -1,6 +1,6 @@
 # oneAPI/c++/cuda/hip DGEMM CPU/GPU heat/power/smoke test for windows and linux
 Based on a tool from Dell which is based on a tutorial by Ryan Bergmann UC Berkeley
-![results](http://davidjyoung.com/cmg/slide4.JPG)
+![results](http://davidjyoung.com/cmg/slide5.JPG)
 ## linux/rocm/hip
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
