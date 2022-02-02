@@ -244,33 +244,41 @@ Use chrome tracing to display results.json
 ## Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
 ```
-C:\dellmatmul>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu
+c:\dellmatmul\cuda10-2-2>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu
 nvcc fatal   : Cannot find compiler 'cl.exe' in PATH
 
-C:\dellmatmul>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu -ccbin "c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin"
-MatMulDblGpuWin.cu
+c:\dellmatmul\cuda10-2-2>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu -ccbin "c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Tools\MSVC\14.16.27023\bin\HostX64"
+matmuldblgpuwin.cu
    Creating library MatMulDblGpuWin.lib and object MatMulDblGpuWin.exp
 
-C:\dellmatmul>dir
+c:\dellmatmul\cuda10-2-2>dir
  Volume in drive C is OS
  Volume Serial Number is ECEE-F446
 
- Directory of C:\dellmatmul
+ Directory of c:\dellmatmul\cuda10-2-2
 
-11/15/2020  07:36 PM    <DIR>          .
-11/15/2020  07:36 PM    <DIR>          ..
-11/07/2020  07:13 AM    <DIR>          fromgithub
+02/01/2022  09:31 PM    <DIR>          .
+02/01/2022  09:31 PM    <DIR>          ..
+09/10/2021  11:24 AM    <DIR>          20210910inteladvisor
+01/01/2022  04:19 PM    <DIR>          dpct_output
 11/07/2020  07:09 AM             6,599 MatMulDblGpuWin.cu
-11/15/2020  07:36 PM           295,424 MatMulDblGpuWin.exe
-11/15/2020  07:36 PM               663 MatMulDblGpuWin.exp
-11/15/2020  07:36 PM             1,898 MatMulDblGpuWin.lib
-08/10/2020  11:26 AM           295,424 mm.exe
-08/10/2020  11:26 AM               638 mm.exp
-08/10/2020  11:26 AM             1,664 mm.lib
-               7 File(s)        602,310 bytes
-               3 Dir(s)  581,298,413,568 bytes free
+02/01/2022  09:31 PM           335,872 MatMulDblGpuWin.exe
+02/01/2022  09:31 PM               732 MatMulDblGpuWin.exp
+02/01/2022  09:12 PM             1,898 MatMulDblGpuWin.lib
+02/01/2022  08:54 PM             6,603 MatMulDblGpuWinNocpu.cu
+02/01/2022  09:30 PM           335,872 MatMulDblGpuWinNocpu.exe
+02/01/2022  09:30 PM               743 MatMulDblGpuWinNocpu.exp
+02/01/2022  09:14 PM             1,966 MatMulDblGpuWinNocpu.lib
+07/05/2021  12:19 PM    <DIR>          r000hpc
+07/05/2021  12:20 PM    <DIR>          r001hpc
+07/05/2021  12:20 PM    <DIR>          r002hpc
+07/05/2021  12:22 PM    <DIR>          r003hpc
+07/05/2021  12:26 PM    <DIR>          r004hpc
+08/15/2021  08:23 AM            45,568 TimeMem.exe
+               9 File(s)        735,853 bytes
+               9 Dir(s)  105,720,381,440 bytes free
 
-C:\dellmatmul>
+c:\dellmatmul\cuda10-2-2>
 ```
 Execute
 ```
