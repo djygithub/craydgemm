@@ -56,7 +56,6 @@ Experiment Done.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 MULTIPLYING TWO SQUARE MATRICES OF SIZE  2000 FLOATS
 ```
-![results](http://davidjyoung.com/cmg/craydgemm.png)
 There are eight scripts provided for exercising eight gpus (0, 1, 2, 3, 4, 5, 6, 7), each looks like the following with a matrix size of 25000 doubles.
 ```
 abc@djy:~/craydgemm/craydgemm$ cat mmdblgpu00.loop.sh
@@ -487,6 +486,8 @@ DstMemType: The type of destination memory accessed by memory operation/copy
 
 c:\dellmatmul\cuda10-2-2>
 ```
+## Ubuntu 20.04 cuda docker Intel I7-7700 Nvidia gtx1050
+![results](http://davidjyoung.com/cmg/craydgemm.png)
 ## Windows 10 cuda 10.2.2 oneAPI dpc++ Intel I7-7700 Intel HD-630
 Initialize oneAPI environment
 ```
