@@ -56,6 +56,7 @@ Experiment Done.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 MULTIPLYING TWO SQUARE MATRICES OF SIZE  2000 FLOATS
 ```
+![results](http://davidjyoung.com/cmg/craydgemm.png)
 There are eight scripts provided for exercising eight gpus (0, 1, 2, 3, 4, 5, 6, 7), each looks like the following with a matrix size of 25000 doubles.
 ```
 abc@djy:~/craydgemm/craydgemm$ cat mmdblgpu00.loop.sh
