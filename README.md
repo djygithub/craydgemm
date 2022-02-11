@@ -726,7 +726,7 @@ GPU-DOUBLE-GFLOPS/second 13.108323
 Experiment Done.
 -------------------------------
 ```
-## oneAPI linux CUDA backend I7 gtx1050
+## oneAPI linux I7 gtx1050
 Compile
 ```
 clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda-sycldevice matmul.dp.cpp -o matmul.dp.exe -std=c++17 -fsycl-unnamed-lambda
