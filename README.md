@@ -1,6 +1,11 @@
 # oneAPI/c++/cuda/hip DGEMM CPU/GPU heat/power/smoke test for windows and linux provides double precision GFLOPS/second for CPU and GPU http://davidjyoung.com/cmg/oneAPI.pdf
 Based on a tool from Dell which is based on a tutorial by Ryan Bergmann UC Berkeley
-![results](http://davidjyoung.com/cmg/slide6.JPG)
+![results](http://davidjyoung.com/cmg/slide6.JPG)<br/>
+rocm ryzen r9nano https://github.com/djygithub/craydgemm#rocm-linux-ryzen-r9nano<br/>
+cuda windows I7 gtx1050 https://github.com/djygithub/craydgemm#cuda-windows-i7-gtx1050<br/>
+cuda linux I7 gtx1050https://github.com/djygithub/craydgemm#cuda-linux-i7-gtx1050<br/>
+oneApi windows I7 hd630 https://github.com/djygithub/craydgemm#oneapi-windows-i7-hd-630<br/>
+oneApi linux I7 gtx1050 https://github.com/djygithub/craydgemm#oneapi-linux-i7-gtx1050<br/>
 ## rocm linux ryzen R9nano
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
