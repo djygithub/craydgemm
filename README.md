@@ -1,7 +1,7 @@
 # oneAPI/c++/cuda/hip DGEMM CPU/GPU heat/power/smoke test for windows and linux provides double precision GFLOPS/second for CPU and GPU http://davidjyoung.com/cmg/oneAPI.pdf
 Based on a tool from Dell which is based on a tutorial by Ryan Bergmann UC Berkeley
 ![results](http://davidjyoung.com/cmg/slide6.JPG)
-## linux/rocm/hip
+## rocm linux ryzen R9nano
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
 abc@djy:~/craydgemm$ unzip craydgemm.zip
@@ -241,7 +241,7 @@ david@ryzen:~/craydgemm/craydgemm$
 ```
 Use chrome tracing to display results.json
 ![chrome tracing](http://davidjyoung.com/cmg/rocprof.json.JPG)
-## Windows 10 Cuda 10.2.2 Intel i7-7700 Nvidia gtx1050
+## cuda windows I7 gtx1050
 Windows/NVCC If you run into an issue finding the cl.exe executable here's a workaround
 ```
 c:\dellmatmul\cuda10-2-2>nvcc -o MatMulDblGpuWin.exe MatMulDblGpuWin.cu
@@ -486,9 +486,9 @@ DstMemType: The type of destination memory accessed by memory operation/copy
 
 c:\dellmatmul\cuda10-2-2>
 ```
-## Ubuntu 20.04 cuda docker Intel I7-7700 Nvidia gtx1050
+## cuda linux I7 gtx1050
 ![results](http://davidjyoung.com/cmg/craydgemm.png)
-## Windows 10 cuda 10.2.2 oneAPI dpc++ Intel I7-7700 Intel HD-630
+## oneAPI windows I7 HD-630
 Initialize oneAPI environment
 ```
 c:\Program Files (x86)\Intel\oneAPI>setvars.bat
@@ -726,7 +726,7 @@ GPU-DOUBLE-GFLOPS/second 13.108323
 Experiment Done.
 -------------------------------
 ```
-## linux oneAPI CUDA backend I7-7700 GTX-1050
+## oneAPI linux CUDA backend I7 gtx1050
 Compile
 ```
 clang++ -fsycl -fsycl-targets=nvptx64-nvidia-cuda-sycldevice matmul.dp.cpp -o matmul.dp.exe -std=c++17 -fsycl-unnamed-lambda
