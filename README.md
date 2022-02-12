@@ -1,5 +1,5 @@
 # oneAPI/c++/cuda/hip DGEMM CPU/GPU heat/power/smoke test for windows and linux provides double precision GFLOPS/second for CPU and GPU http://davidjyoung.com/cmg/oneAPI.pdf
-Based on a tool from Dell which is based on a tutorial by Ryan Bergmann UC Berkeley
+Based on a tool from Dell, which is based on a single precision tutorial by Ryan Bergmann UC Berkeley.
 ![results](http://davidjyoung.com/cmg/slide6.JPG)<br/>
 **rocm ryzen r9nano**  https://github.com/djygithub/craydgemm#rocm-linux-ryzen-r9nano<br/>
 **cuda windows I7 gtx1050**  https://github.com/djygithub/craydgemm#cuda-windows-i7-gtx1050<br/>
