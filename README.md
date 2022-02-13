@@ -7,7 +7,7 @@ Based on a tool from Dell, which is based on a single precision tutorial by Ryan
 **oneApi windows I7 hd630**  https://github.com/djygithub/craydgemm#oneapi-windows-i7-hd-630<br/>
 **oneApi linux I7 gtx1050**  https://github.com/djygithub/craydgemm#oneapi-linux-i7-gtx1050<br/>
 ## rocm linux ryzen R9nano
-http://davidjyoung.com/movies/ryzencraydgemmstringquartet/<br/>
+http://davidjyoung.com/movies/ryzenradeontopcraydgemm/<br/>
 Copy craydgemm.zip from github (djygithub/craydgemm) to test directory, unzip it.  
 ```
 abc@djy:~/craydgemm$ unzip craydgemm.zip
